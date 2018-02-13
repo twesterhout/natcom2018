@@ -31,6 +31,7 @@ def ten_runs(runs,iterations):
     for i in range(0,runs):
         _,_,scores = genetic_one_plus_one(fitness,8,100)
         plt.plot(range(0,iterations),scores)
+        plt.title('(1 + 1) GA')
         plt.xlabel('Iteration')
         plt.ylabel('Fitness')
         plt.savefig(str(_get_current_file_dir() / '..' / '..' / 'doc' /
