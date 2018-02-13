@@ -21,7 +21,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 import numpy as np
+import os
+import sys
 import matplotlib.pyplot as plt
+from pathlib import Path
     
 def ten_runs(runs,iterations):
     #metascores = []    
@@ -30,7 +33,8 @@ def ten_runs(runs,iterations):
         plt.plot(range(0,iterations),scores)
         plt.xlabel('Iteration')
         plt.ylabel('Fitness')
-        plt.savefig('genetic_algorithm.png')        
+        plt.savefig(str(_get_current_file_dir() / '..' / '..' / 'doc' /
+                  'source' / 'genetic_algorithm.png'))      
         #metascores.append(scores)
     
 def genetic_one_plus_one(f,n,iterations):
@@ -48,7 +52,10 @@ def genetic_one_plus_one(f,n,iterations):
             x = x2
         scores.append(f(x))
     return x, f(x), scores
-        
+
+def _get_current_file_dir() -> Path:
+    """Returns the directory of the script."""
+    return Path(os.path.realpath(__file__)).parent
 
 def fitness(x):
     return sum(x)
