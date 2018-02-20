@@ -138,6 +138,58 @@ replacing <span class="math">\(f\)</span> with <span class="math">\(f_1\)</span>
 <p>And the result:</p>
 <img alt="_images/genetic_algorithm.png" src="_images/genetic_algorithm.png" />
 </li>
+<li><p class="first">Function set: <span class="math">\(\{\wedge, \vee, \to, \leftrightarrow\}\)</span>, terminal
+set: <span class="math">\(\{x, y, z, true\}\)</span>, and the s-expression is:</p>
+</li>
+</ol>
+<blockquote>
+<div><div class="math">
+\[\left(\to (\wedge\; x\; true)\; (\vee\; (\vee\; x\; y)\;
+   (\leftrightarrow\; z\; (\wedge\; x\; y))) \right) \;.\]</div>
+</div></blockquote>
+<ol class="arabic">
+<li><p class="first">Here’s the code:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="n">data</span> <span class="o">=</span> <span class="n">read_data</span><span class="p">()</span>
+    <span class="n">regressor</span> <span class="o">=</span> <span class="n">SymbolicRegressor</span><span class="p">(</span><span class="n">population_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+                                  <span class="n">generations</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                                  <span class="n">const_range</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0</span><span class="p">),</span>
+                                  <span class="n">init_depth</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+                                  <span class="n">init_method</span><span class="o">=</span><span class="s1">&#39;grow&#39;</span><span class="p">,</span>
+                                  <span class="n">function_set</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;sub&#39;</span><span class="p">,</span> <span class="s1">&#39;mul&#39;</span><span class="p">,</span> <span class="s1">&#39;div&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="s1">&#39;sin&#39;</span><span class="p">,</span> <span class="s1">&#39;cos&#39;</span><span class="p">),</span>
+                                  <span class="n">p_crossover</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+                                  <span class="n">p_subtree_mutation</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                                  <span class="n">p_hoist_mutation</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                                  <span class="n">p_point_mutation</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                                  <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                  <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">regressor</span><span class="o">.</span><span class="n">_program</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>And the results:</p>
+<img alt="_images/GP_Function.png" src="_images/GP_Function.png" />
+<img alt="_images/GP_Size.png" src="_images/GP_Size.png" />
+<img alt="_images/GP_Fitness.png" src="_images/GP_Fitness.png" />
+<p>Fortunately, our fit converged really well with no undesirable effects.</p>
+</li>
 </ol>
 </div>
 </div>

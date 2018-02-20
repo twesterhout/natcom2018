@@ -64,4 +64,29 @@ Assignment 1
 
    .. image:: genetic_algorithm.png
 
+#. Function set: :math:`\{\wedge, \vee, \to, \leftrightarrow\}`, terminal
+   set: :math:`\{x, y, z, true\}`, and the s-expression is:
 
+  .. math::
+
+     \left(\to (\wedge\; x\; true)\; (\vee\; (\vee\; x\; y)\;
+        (\leftrightarrow\; z\; (\wedge\; x\; y))) \right) \;.
+
+
+
+#. Here's the code:
+
+   .. literalinclude:: ../../src/assignment1/genetic_fit.py
+      :language: python
+      :linenos:
+      :lines: 43-59
+
+   And the results:
+
+   .. image:: GP_Function.png
+
+   .. image:: GP_Size.png
+
+   .. image:: GP_Fitness.png
+
+   Fortunately, our fit converged really well with no undesirable effects.
