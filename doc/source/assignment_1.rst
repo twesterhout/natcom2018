@@ -67,12 +67,10 @@ Assignment 1
 #. Function set: :math:`\{\wedge, \vee, \to, \leftrightarrow\}`, terminal
    set: :math:`\{x, y, z, true\}`, and the s-expression is:
 
-  .. math::
+   .. math::
 
      \left(\to (\wedge\; x\; true)\; (\vee\; (\vee\; x\; y)\;
         (\leftrightarrow\; z\; (\wedge\; x\; y))) \right) \;.
-
-
 
 #. Here's the code:
 
