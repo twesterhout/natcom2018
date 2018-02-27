@@ -11,6 +11,7 @@ Welcome to Natural Computing Course Assignments's documentation!
    :caption: Contents:
 
    assignment_1
+   assignment_2
 
 
 
